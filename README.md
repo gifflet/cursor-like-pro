@@ -1,66 +1,34 @@
-# How to Use Cursor Like a Pro 🚀
+# Cursor Like Pro 🚀
 
-## 🎯 Introduction
-**Cursor** is a code editor with integrated AI, designed to increase developer productivity. With advanced features, it enables everything from simple task automation to deep integrations with external tools. In this article, we explore how to use it efficiently, from basic to advanced levels.
+This repository contains resources and guides to help developers maximize their productivity using Cursor, an AI-powered code editor.
 
----
+## 📚 What You'll Find Here
 
-## 1. 🔰 Initial Setup (Beginner - 5/10 productivity)
+### [CURSOR_TIPS.md](./CURSOR_TIPS.md)
+A comprehensive guide on how to use Cursor professionally, including:
+- Initial setup and best practices
+- Project customization
+- Documentation and research integration
+- Advanced features like MCP (Model Context Protocol)
 
-### 📥 Installation and First Steps
-- Download and install Cursor.
-- Explore the interface and main shortcuts.
+## 📋 Rules
 
-### ⚙️ Configuring Global AI Rules
-- **AI Rules** customize how AI interacts with your code.
-- Go to **Settings → General** and add rules according to your needs.
-- Example: Force standardized SQL formatting.
+Rules in Cursor are predefined instructions that guide how the AI assistant interacts with your code. They help maintain consistency, enforce best practices, and automate repetitive tasks across your projects. By configuring rules, you can customize the AI's behavior to match your team's coding standards and workflow preferences.
 
----
+| Rule Name | Purpose | Description |
+|-----------|---------|-------------|
+| [git-conventions](./.cursor/rules/git-conventions.mdc) | Git Workflow Standards | Enforces Conventional Commits format, git MCP integration, and provides guidelines for branch naming, commit messages, and overall Git workflow |
 
-## 2. 🛠️ Project Customization (Intermediate - 8/10 productivity)
+## 🤝 Contributing
 
-### 📂 Project-specific Rules
-- **Project Rules** allow you to define rules within the project, overriding `do_cursor_rules`.
-- Use **Globs** to automatically load rules for specific file types.
-- Share rules via Git to standardize configuration across teams.
+Feel free to contribute to this repository! You can:
+- Report bugs
+- Suggest new features
+- Improve documentation
+- Share your own tips and tricks
 
-### 📝 Notepads: Automating Recurring Prompts
-- Store frequent instructions with **Notepads**.
-- Example: Creating a Notepad to add new pages in a frontend project.
+## 📝 License
 
----
-
-## 3. 🔍 Documentation and AI Research (Advanced - 9/10 productivity)
-
-### 🌐 Querying the Web Inside Cursor
-- Use `@web` to get real-time answers.
-- Example: Search for the latest version of **Tailwind CSS**.
-
-### 📚 Indexing Custom Documentation
-- Add references to Cursor with `@docs`.
-- Example: Load API documentation of a service for quick queries.
-
----
-
-## 4. ⚡ Advanced MCP Integrations (Professional - 10/10 productivity)
-
-### 🤖 What is MCP?
-- **Model Context Protocol (MCP)** connects AI to external tools like **Docker, PostgreSQL, and APIs**.
-
-### 🔌 Setting up an MCP Server
-- Install and configure an MCP Server to execute commands directly in Cursor.
-- Example: Create a **Docker** container without leaving the editor.
-
-### ⚡ Full Automation with "YOLO Mode"
-- Allows automatic execution of AI suggestions.
-- Requires caution to avoid unwanted actions.
-
----
-
-## 🎉 Conclusion
-Cursor is a powerful tool for developers who want to accelerate their workflow with AI. From simple customizations to advanced integrations, it enables automation and efficiency in daily tasks.
-
-With these techniques, you can use Cursor like a **pro**, increasing productivity and reducing time spent on repetitive tasks.
+This project is under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 ---
