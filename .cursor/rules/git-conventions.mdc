@@ -3,11 +3,6 @@ description: Git conventions and workflow guidelines using Conventional Commits
 globs: 
 alwaysApply: false
 ---
----
-description: Git conventions and workflow guidelines using Conventional Commits
-globs: "**/*"
-alwaysApply: true
----
 # Git Conventions and Workflow Guidelines 🔄
 
 ## Language Requirements

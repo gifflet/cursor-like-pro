@@ -1,12 +1,7 @@
 ---
-description: Conventions and guidelines for maintaining the project's README.md
-globs: 
+description: 
+globs: README.md
 alwaysApply: false
----
----
-description: Conventions and guidelines for maintaining the project's README.md
-globs: "**/README.md"
-alwaysApply: true
 ---
 # README Conventions and Guidelines 📚
 
