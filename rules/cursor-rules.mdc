@@ -63,3 +63,34 @@ function badExample() {
   // Implementation not following guidelines
 }
 ```
+
+6. Rule Types and Properties:
+
+The rule properties (description, globs, alwaysApply) must be filled according to how the rule will be added to the chat context. Only one of these properties should have a valid/defined value at a time (note that false in alwaysApply is considered empty as it's the default value).
+
+Types of rules:
+
+a) Always Rules:
+   - Set `alwaysApply: true`
+   - Leave `description` and `globs` empty
+   - These rules are automatically added to every chat context
+
+b) Auto Attached Rules:
+   - Set `globs` with a pattern matching the files to be modified
+   - Leave `description` and `alwaysApply` with default values
+   - These rules are automatically added when working with files matching the glob pattern
+
+c) Agent Requested Rules:
+   - Set `description` with a clear purpose of the rule
+   - Leave `globs` and `alwaysApply` with default values
+   - These rules are added when the AI agent recognizes their relevance based on the description
+
+d) Manual Rules:
+   - Leave all properties with default values
+   - These rules are only added when manually requested by the user
+   - Properties should be:
+     ```
+     description: 
+     globs: 
+     alwaysApply: false
+     ```
