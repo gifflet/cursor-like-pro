@@ -1,66 +1,66 @@
-# Como Usar o Cursor Como um Profissional
+# How to Use Cursor Like a Pro 🚀
 
-## Introdução  
-O **Cursor** é um editor de código com IA integrada, projetado para aumentar a produtividade de desenvolvedores. Com funcionalidades avançadas, permite desde a automação de tarefas simples até integrações profundas com ferramentas externas. Neste artigo, exploramos como usá-lo de forma eficiente, do nível básico ao avançado.
-
----
-
-## 1. Configuração Inicial (Iniciante - 5/10 na produtividade)
-
-### Instalação e primeiros passos  
-- Baixe e instale o Cursor.  
-- Explore a interface e os principais atalhos.  
-
-### Configurando regras globais de IA  
-- **Regras para IA** personalizam como a IA interage com seu código.  
-- Vá em **Configurações → Geral** e adicione regras conforme sua necessidade.  
-- Exemplo: Forçar formatação de SQL padronizada.  
+## 🎯 Introduction
+**Cursor** is a code editor with integrated AI, designed to increase developer productivity. With advanced features, it enables everything from simple task automation to deep integrations with external tools. In this article, we explore how to use it efficiently, from basic to advanced levels.
 
 ---
 
-## 2. Personalização por Projeto (Intermediário - 8/10 na produtividade)
+## 1. 🔰 Initial Setup (Beginner - 5/10 productivity)
 
-### Regras específicas por projeto  
-- **Project Rules** permitem definir regras dentro do projeto, substituindo `do_cursor_rules`.  
-- Utilize **Globs** para carregar regras automaticamente para tipos de arquivos específicos.  
-- Compartilhe regras via Git para padronizar a configuração entre equipes.  
+### 📥 Installation and First Steps
+- Download and install Cursor.
+- Explore the interface and main shortcuts.
 
-### Notepads: Automação de prompts recorrentes  
-- Armazene instruções frequentes com **Notepads**.  
-- Exemplo: Criando um Notepad para adicionar novas páginas em um projeto de frontend.  
-
----
-
-## 3. Documentação e Pesquisa na IA (Avançado - 9/10 na produtividade)
-
-### Consultando a web dentro do Cursor  
-- Use `@web` para obter respostas em tempo real.  
-- Exemplo: Buscar a versão mais recente do **Tailwind CSS**.  
-
-### Indexando documentações personalizadas  
-- Adicione referências ao Cursor com `@docs`.  
-- Exemplo: Carregar documentação da API de um serviço para consultas rápidas.  
+### ⚙️ Configuring Global AI Rules
+- **AI Rules** customize how AI interacts with your code.
+- Go to **Settings → General** and add rules according to your needs.
+- Example: Force standardized SQL formatting.
 
 ---
 
-## 4. Integrações Avançadas com MCP (Profissional - 10/10 na produtividade)
+## 2. 🛠️ Project Customization (Intermediate - 8/10 productivity)
 
-### O que é MCP?  
-- O **Model Context Protocol (MCP)** conecta a IA a ferramentas externas como **Docker, PostgreSQL e APIs**.  
+### 📂 Project-specific Rules
+- **Project Rules** allow you to define rules within the project, overriding `do_cursor_rules`.
+- Use **Globs** to automatically load rules for specific file types.
+- Share rules via Git to standardize configuration across teams.
 
-### Configuração de um MCP Server  
-- Instale e configure um MCP Server para executar comandos diretamente no Cursor.  
-- Exemplo: Criar um container **Docker** sem sair do editor.  
-
-### Automação total com "YOLO Mode"  
-- Permite execução automática de sugestões da IA.  
-- Requer cautela para evitar ações indesejadas.  
+### 📝 Notepads: Automating Recurring Prompts
+- Store frequent instructions with **Notepads**.
+- Example: Creating a Notepad to add new pages in a frontend project.
 
 ---
 
-## Conclusão  
-O Cursor é uma ferramenta poderosa para desenvolvedores que desejam acelerar seu fluxo de trabalho com IA. Desde personalizações simples até integrações avançadas, ele permite automação e eficiência no dia a dia.  
+## 3. 🔍 Documentation and AI Research (Advanced - 9/10 productivity)
 
-Com essas técnicas, você pode usar o Cursor como um **profissional**, aumentando a produtividade e reduzindo o tempo gasto em tarefas repetitivas.  
+### 🌐 Querying the Web Inside Cursor
+- Use `@web` to get real-time answers.
+- Example: Search for the latest version of **Tailwind CSS**.
+
+### 📚 Indexing Custom Documentation
+- Add references to Cursor with `@docs`.
+- Example: Load API documentation of a service for quick queries.
+
+---
+
+## 4. ⚡ Advanced MCP Integrations (Professional - 10/10 productivity)
+
+### 🤖 What is MCP?
+- **Model Context Protocol (MCP)** connects AI to external tools like **Docker, PostgreSQL, and APIs**.
+
+### 🔌 Setting up an MCP Server
+- Install and configure an MCP Server to execute commands directly in Cursor.
+- Example: Create a **Docker** container without leaving the editor.
+
+### ⚡ Full Automation with "YOLO Mode"
+- Allows automatic execution of AI suggestions.
+- Requires caution to avoid unwanted actions.
+
+---
+
+## 🎉 Conclusion
+Cursor is a powerful tool for developers who want to accelerate their workflow with AI. From simple customizations to advanced integrations, it enables automation and efficiency in daily tasks.
+
+With these techniques, you can use Cursor like a **pro**, increasing productivity and reducing time spent on repetitive tasks.
 
 ---
