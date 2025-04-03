@@ -1,0 +1,389 @@
+---
+description: Git conventions and workflow guidelines using Conventional Commits
+globs: 
+alwaysApply: false
+---
+---
+description: Git conventions and workflow guidelines using Conventional Commits
+globs: "**/*"
+alwaysApply: true
+---
+# Git Conventions and Workflow Guidelines 🔄
+
+## Language Requirements
+
+All git-related text MUST be written in English:
+- Commit messages
+- Branch names
+- Pull request titles and descriptions
+- Code review comments
+- Issue titles and descriptions
+
+## Commit Message Format
+
+All commit messages MUST follow the [Conventional Commits](mdc:https:/www.conventionalcommits.org) specification:
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+### Types
+
+- `feat`: A new feature
+- `fix`: A bug fix
+- `docs`: Documentation only changes
+- `style`: Changes that do not affect the meaning of the code (formatting, etc)
+- `refactor`: A code change that neither fixes a bug nor adds a feature
+- `perf`: A code change that improves performance
+- `test`: Adding missing tests or correcting existing tests
+- `chore`: Changes to the build process or auxiliary tools
+- `ci`: Changes to CI configuration files and scripts
+
+### Scope
+The scope should be the name of the component affected (as perceived by the person reading the changelog).
+
+Examples:
+- `feat(auth): add login with Google`
+- `fix(api): handle null response from server`
+- `docs(readme): update installation steps`
+
+### Description
+- Use the imperative, present tense: "change" not "changed" nor "changes"
+- Don't capitalize first letter
+- No dot (.) at the end
+- Write in english
+
+## Branch Naming Convention
+
+Branches should follow this pattern:
+```
+<type>/<short-description>
+```
+
+For features and fixes that are tracked in a project management system, include the ticket number:
+```
+<type>/<ticket-number>-<short-description>
+```
+
+Examples:
+- `feat/add-google-auth`
+- `fix/handle-null-responses`
+- `docs/update-readme`
+- `feat/PROJ-123-add-google-auth`
+- `fix/PROJ-456-handle-null-responses`
+
+## Workflow Guidelines
+
+1. **Protected Branches**
+   - `main` (or `master`): Production-ready code, protected branch
+   - Direct commits to protected branches are NOT allowed
+   - All changes must come through Pull Requests
+
+2. **Feature Development**
+   ```bash
+   # First, check if you're on a protected branch
+   git branch --show-current
+   
+   # If on main/master, create and checkout a new feature branch
+   git checkout -b feat/my-new-feature main
+   
+   # Make changes and commit
+   git add .
+   git commit -m "feat(scope): add new feature"
+   
+   # Keep branch updated with main
+   git fetch origin main
+   git rebase origin/main
+   
+   # Push changes
+   git push origin feat/my-new-feature
+   ```
+
+3. **Pull Request Process**
+   - Create PR from feature branch to main/master
+   - Use PR template if available
+   - Request at least 2 code reviews
+   - All tests must pass
+   - No merge conflicts
+   - Squash commits when merging
+
+4. **Release Process**
+   ```bash
+   # Create release branch from main
+   git checkout main
+   git pull origin main
+   git checkout -b release/v1.0.0
+   
+   # After testing, merge back to main via PR
+   # After PR is approved and merged:
+   git checkout main
+   git pull origin main
+   git tag -a v1.0.0 -m "version 1.0.0"
+   git push origin main --tags
+   ```
+
+## Examples
+
+✅ Good Commits:
+```bash
+feat(auth): implement JWT authentication
+fix(api): handle edge case in user validation
+docs(api): update API documentation
+style(components): format according to style guide
+refactor(database): optimize query performance
+test(auth): add unit tests for login flow
+```
+
+❌ Bad Commits:
+```bash
+Fixed stuff
+Updated code
+WIP
+Quick fix
+```
+
+## Pre-commit Hooks
+
+Consider using pre-commit hooks to enforce these conventions:
+- Commit message format validation
+- Code linting
+- Test execution
+- Branch naming validation
+- Protected branch validation
+
+## Using MCP Git in Cursor 🤖
+
+The Model Context Protocol (MCP) Git integration allows you to perform Git operations directly from Cursor while following our commit conventions.
+
+> **Important**: For proper path handling in MCP Git operations, please refer to the `mcp-git-path-encoding.mdc` rule file. This ensures consistent path handling across different platforms and prevents encoding issues.
+
+### Basic MCP Git Commands
+
+1. **Check Current Branch and Create Feature Branch if Needed**
+   ```python
+   # First check current branch
+   mcp_git_git_status(repo_path=".")
+   
+   # If on main/master, create and switch to feature branch
+   mcp_git_git_create_branch(
+       repo_path=".",
+       branch_name="feat/my-new-feature",
+       base_branch="main"
+   )
+   mcp_git_git_checkout(
+       repo_path=".",
+       branch_name="feat/my-new-feature"
+   )
+   ```
+
+2. **Viewing Changes**
+   ```python
+   # View unstaged changes
+   mcp_git_git_diff_unstaged(repo_path=".")
+   
+   # View staged changes
+   mcp_git_git_diff_staged(repo_path=".")
+   ```
+
+3. **Making Commits**
+   ```python
+   # First ensure you're not on a protected branch
+   status = mcp_git_git_status(repo_path=".")
+   if "main" in status or "master" in status:
+       # Create feature branch first
+       branch_name = "feat/my-feature"
+       mcp_git_git_create_branch(
+           repo_path=".",
+           branch_name=branch_name,
+           base_branch="main"
+       )
+       mcp_git_git_checkout(repo_path=".", branch_name=branch_name)
+   
+   # Then stage and commit
+   mcp_git_git_add(repo_path=".", files=["path/to/file"])
+   mcp_git_git_commit(
+       repo_path=".",
+       message="feat(component): add new feature"
+   )
+   ```
+
+### MCP Git Workflow Example
+
+```python
+# 1. Check current branch
+mcp_git_git_status(repo_path=".")
+
+# 2. If on main/master, create feature branch
+mcp_git_git_create_branch(
+    repo_path=".",
+    branch_name="feat/user-auth",
+    base_branch="main"
+)
+mcp_git_git_checkout(
+    repo_path=".",
+    branch_name="feat/user-auth"
+)
+
+# 3. Make changes and commit
+mcp_git_git_add(repo_path=".", files=["src/auth/*"])
+mcp_git_git_commit(
+    repo_path=".",
+    message="feat(auth): implement user authentication"
+)
+
+# 4. View commit history
+mcp_git_git_log(repo_path=".", max_count=5)
+```
+
+### Best Practices for MCP Git
+
+1. **Always Check Branch First**
+   ```python
+   # Check current branch before any operations
+   mcp_git_git_status(repo_path=".")
+   ```
+
+2. **Never Commit Directly to Protected Branches**
+   - Always create a feature branch first
+   - Use Pull Requests for merging changes
+
+3. **Review Changes Before Committing**
+   ```python
+   # Review unstaged changes
+   mcp_git_git_diff_unstaged(repo_path=".")
+   
+   # Review staged changes
+   mcp_git_git_diff_staged(repo_path=".")
+   ```
+
+4. **Use Meaningful Branch Names and Commit Messages**
+   - Follow type/description format for branches
+   - Follow conventional commits for messages
+   - Keep descriptions clear and concise
+
+### Integration with Development Tools
+
+When using MCP Git with our recommended tools:
+
+1. **Commitlint**: MCP Git commits will be validated against our commit conventions
+2. **Husky**: Pre-commit hooks will run on MCP Git commits
+3. **CI/CD**: MCP Git commits trigger the same workflows as regular Git commits
+4. **Branch Protection**: Ensure your repository has branch protection rules enabled for main/master
+
+
+# MCP Git Path Encoding Guidelines 🛠️
+
+## Path Handling in MCP Git Operations
+
+When working with MCP Git operations, follow these guidelines for path handling:
+
+1. **Path Format**
+   - Use normalized Windows paths (backslashes)
+   - Remove URL encoding from paths
+   - Remove duplicate drive letters
+
+2. **Path Transformation**
+   ```python
+   # Instead of using raw workspace path
+   repo_path = "/c%3A/Users/path/to/repo"  # ❌ Wrong
+
+   # Transform the path before using
+   import os
+   
+   def normalize_path(path):
+       # Remove URL encoding
+       path = path.replace("%3A", ":")
+       # Convert to Windows path format
+       path = path.replace("/", "\\")
+       # Remove leading slashes and handle drive letter properly
+       if ":" in path:
+           # Split on drive letter colon
+           parts = path.split(":", 1)
+           drive = parts[0].strip("\\")  # Remove any leading slashes
+           remaining = parts[1]
+           path = f"{drive}:{remaining}"
+       return path
+
+   repo_path = normalize_path("/Users/path/to/repo")  # ✅ Correct
+   # Result: c:\Users\path\to\repo
+   ```
+
+3. **Best Practices**
+   - Always normalize paths before passing to MCP Git functions
+   - Use consistent path separators (Windows style for Windows)
+   - Handle drive letter properly
+   - Remove any URL encoding artifacts
+
+4. **Example Usage**
+   ```python
+   # Before any MCP Git operation
+   repo_path = normalize_path(workspace_path)
+   
+   # Then use in MCP Git commands
+   mcp_git_git_status(repo_path=repo_path)
+   mcp_git_git_add(repo_path=repo_path, files=["file.txt"])
+   mcp_git_git_commit(repo_path=repo_path, message="feat: add new feature")
+   ```
+
+5. **Common Issues to Avoid**
+   - Using paths with URL encoding (e.g. %3A)
+   - Using paths that start with / or \\ before the drive letter
+   - Mixing forward and backward slashes
+   - Using paths with improper encoding
+
+## Critical Path Format Requirements for MCP Git
+
+### Repo Path Format Specification
+
+When using any MCP Git command, the `repo_path` parameter MUST follow these exact rules:
+
+1. **Correct Format**
+   ```
+   C:/Users/path/to/repo    ✅ Correct
+   ```
+
+2. **Forbidden Formats**
+   ```
+   /c%3A/Users/path/to/repo     ❌ Wrong (URL encoded)
+   C:\c%3A\Users\path\to\repo   ❌ Wrong (Duplicated drive)
+   \c%3A\Users\path\to\repo     ❌ Wrong (Leading slash + encoding)
+   ```
+
+3. **Rules**
+   - Use forward slashes (/) instead of backslashes (\)
+   - Start with drive letter (e.g., C:/)
+   - NO URL encoding (%3A)
+   - NO duplicate drive letters
+   - NO leading slashes before drive letter
+   - Path must be absolute
+
+4. **Example Usage in MCP Git Commands**
+   ```python
+   # Correct usage
+   mcp_git_git_log(repo_path="C:/Users/path/to/repo")
+   mcp_git_git_status(repo_path="C:/Users/path/to/repo")
+   mcp_git_git_commit(repo_path="C:/Users/path/to/repo", message="feat: add feature")
+   ```
+
+> **IMPORTANT**: Failure to follow this exact format will result in path resolution errors and incorrect Git operations.
+
+
+## Integration with Other Tools
+
+When using MCP Git with other tools or systems:
+
+1. **IDE Integration**
+   - Ensure path normalization before passing to MCP Git
+   - Handle workspace paths consistently
+
+2. **Cross-platform Compatibility**
+   - Use `os.path` functions for path manipulation
+   - Consider platform-specific path separators
+
+3. **Version Control**
+   - Keep path handling consistent across commits
+   - Document path handling requirements
