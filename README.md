@@ -17,7 +17,8 @@ Rules in Cursor are predefined instructions that guide how the AI assistant inte
 
 | Rule Name | Purpose | Description |
 |-----------|---------|-------------|
-| [git-conventions](./.cursor/rules/git-conventions.mdc) | Git Workflow Standards | Enforces Conventional Commits format, git MCP integration, and provides guidelines for branch naming, commit messages, and overall Git workflow |
+| [git-conventions](./rules/git-conventions/README.md) | Git Workflow Standards | Enforces Conventional Commits format, git MCP integration, and provides guidelines for branch naming, commit messages, and overall Git workflow |
+| [director](./rules/director/README.md) | Development Planning | Provides guidelines for autonomous iterative development, including configuration requirements, development cycles, and evaluation protocols for code implementation |
 
 ## 🤝 Contributing
 
